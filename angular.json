@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "web-cinema": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "web-cinema"
+    }
+  },
+  "defaultProject": "web-cinema",
+  "cli": {
+    "analytics": "aef9c564-aa6a-4b7c-a827-c27a11d9066e"
+  }
 }
