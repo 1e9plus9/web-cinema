@@ -5,7 +5,6 @@ import {MovieDetailsComponent} from './components/movie-details/movie-details.co
 
 
 const routes: Routes = [
-
   { path: 'movies/:id', component: MovieDetailsComponent},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'}

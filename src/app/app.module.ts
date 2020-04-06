@@ -8,18 +8,28 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { AuthorizationComponent } from './components/authorization/authorization.component';
+import {OverlayModule} from '@angular/cdk/overlay';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     HomeComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    AuthorizationComponent,
+    RegistrationComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
