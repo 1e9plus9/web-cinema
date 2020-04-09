@@ -11,6 +11,10 @@ import { MovieService } from '../../services/movie.service';
 
 export class HomeComponent implements OnInit {
   movies: Movie[];
+  selected: Movie = null;
+  regular = {filter: 'brightness(85%)'};
+  dark = {filter: 'brightness(30%)'};
+  bright = {filter: 'brightness(100%)'};
 
   constructor(private movieService: MovieService) { }
 
@@ -19,7 +23,15 @@ export class HomeComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.movies = this.movieService.getMovies();
+    this.movieService.getMovies().subscribe(movies => this.movies = movies);
+  }
+
+  setEffect(movie: Movie): void {
+    this.selected = movie;
+  }
+
+  clearEffect(): void {
+    this.selected = null;
   }
 
 }

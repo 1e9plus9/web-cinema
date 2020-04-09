@@ -1,5 +1,8 @@
-<div>
-  <a routerLink="/"><img src="/assets/logo.png" alt="logo"  class="logo"></a>
-  <button (click)="login()"><p>Log In</p></button>
-  <button (click)="register()"><p>Join</p></button>
+<div class="main">
+  <a routerLink="/" style="margin-left: 130px"><img src="/assets/logo.png" alt="logo"  class="logo"></a>
+  <div>
+    <button (click)="login()"><p>Log In</p></button>
+    <button (click)="register()"><p>Join</p></button>
+    <a [routerLink]="'profile/'"><span class="material-icons" style="position:relative; top: 5px;">account_circle</span></a>
+  </div>
 </div>

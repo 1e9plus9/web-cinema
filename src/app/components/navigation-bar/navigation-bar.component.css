@@ -1,7 +1,8 @@
-div {
+.main {
   display: flex;
   flex-direction: row;
   background-color: black;
+  justify-content: space-between;
   width: 100%;
   height: 60px;
   margin: 0;
@@ -10,6 +11,7 @@ div {
 
 div * {
   padding: 5px;
+  margin-left: auto;
 }
 
 .logo {
@@ -17,12 +19,7 @@ div * {
 }
 
 a {
-  margin: auto;
   text-decoration: none;
-}
-
-div {
-  margin: auto;
 }
 
 p {
@@ -30,12 +27,33 @@ p {
   font-size: large;
 }
 
+p:hover {
+  color: rgba(249,163,45, 1);
+  cursor: pointer;
+}
+
 button {
+  margin-right: 0;
+  margin-left: 0;
   width: 80px;
   height: 100%;
-  margin: auto;
   background-color: black;
   color: white;
   border: none;
 }
+
+span {
+  color: rgba(255, 255, 255, 1);
+}
+
+a:hover, a:hover span {
+  color: rgba(249,163,45, 1);
+}
+
+span, p {
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+}
+
 

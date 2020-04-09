@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
-import {OverlayModule} from '@angular/cdk/overlay';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { RegistrationComponent } from './components/registration/registration.co
     HomeComponent,
     MovieDetailsComponent,
     AuthorizationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    BottomBarComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -29,7 +35,11 @@ import { RegistrationComponent } from './components/registration/registration.co
     AppRoutingModule,
     MatGridListModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

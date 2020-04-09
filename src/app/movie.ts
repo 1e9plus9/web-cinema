@@ -6,4 +6,5 @@ export class Movie {
   director: string;
   cast: string;
   id: number;
+  synopsis: string;
 }
