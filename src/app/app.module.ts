@@ -17,6 +17,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SearchComponent } from './components/search/search.component';
+import { CommentPageComponent } from './components/comment-page/comment-page.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AuthorizationComponent,
     RegistrationComponent,
     BottomBarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SearchComponent,
+    CommentPageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,8 +43,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatDialogModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

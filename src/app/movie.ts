@@ -7,4 +7,6 @@ export class Movie {
   cast: string;
   id: number;
   synopsis: string;
+  genres: string[];
+  pageId: number;
 }

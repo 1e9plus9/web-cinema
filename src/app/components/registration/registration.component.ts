@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-registration',
@@ -7,10 +8,17 @@ import { MovieService } from '../../services/movie.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-  constructor() { }
+  name: string;
+  surname: string;
+  username: string;
+  password: string;
+  passwordConfirmation: string;
+  constructor(private dialogRef: MatDialogRef<RegistrationComponent>) { }
 
   ngOnInit(): void {
+  }
+  register(): void {
+    this.dialogRef.close();
   }
 
 }
