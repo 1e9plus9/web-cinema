@@ -18,6 +18,7 @@
     </div>
     <p style="width: 900px; height: 100px">{{comment.message}}</p>
   </div>
+  <p style="color: white; margin-top: -4px; margin-right: 2px;" class="clickable" (click)="deleteComment(comment)">Delete</p>
   <img class="clickable" src="assets/upvote.png" style="height: 12px; width: 12px; margin-right: 2px" (click)="changeVote(comment, 1)">
   <p style="margin-top: -2px">{{comment.score}}</p>
   <img class="clickable" src="assets/downvote.png" style="height: 12px; width: 12px; margin-left: 2px" (click)="changeVote(comment, -1)">

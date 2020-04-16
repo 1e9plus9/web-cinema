@@ -17,7 +17,7 @@ export class CommentService {
     const url = `${this.baseUrl}/${pageId}`;
     return this.httpClient.get<CommentSet>(url);
   }
-  addComment(commentSet: CommentSet): Observable<any> {
+  updateComment(commentSet: CommentSet): Observable<any> {
     return this.httpClient.put(this.baseUrl, commentSet, this.httpOptions);
   }
 }

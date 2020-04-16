@@ -26,6 +26,7 @@ export class CommentPageComponent implements OnInit {
         c.score += delta;
       }
     }
+    this.commentService.updateComment(this.commentPage).subscribe();
   }
   writeComment(): void {
     const comment: Comment = {
@@ -35,6 +36,11 @@ export class CommentPageComponent implements OnInit {
       score: 0
     };
     this.commentPage.comments.push(comment);
-    this.commentService.addComment(this.commentPage).subscribe();
+    this.commentService.updateComment(this.commentPage).subscribe();
+  }
+  deleteComment(comment: Comment): void {
+    const index = this.commentPage.comments.indexOf(comment, 0);
+    this.commentPage.comments.splice(index, 1);
+    this.commentService.updateComment(this.commentPage).subscribe();
   }
 }
