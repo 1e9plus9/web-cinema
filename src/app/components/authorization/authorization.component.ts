@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
+import {AuthenticationService} from '../../services/authentication.service';
+import {User} from '../../user';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-authorization',
@@ -7,14 +10,30 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./authorization.component.css']
 })
 export class AuthorizationComponent implements OnInit {
-  name: string;
+  username: string;
   password: string;
-  constructor(private dialogRef: MatDialogRef<AuthorizationComponent>) { }
+  message: string;
+
+  constructor(private dialogRef: MatDialogRef<AuthorizationComponent>, private tokenStorageService: TokenStorageService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
   enter(): void {
-    console.log('here');
-    this.dialogRef.close();
+    const user = {
+      username: this.username,
+      password: this.password,
+    };
+    this.authenticationService.login(user).subscribe(
+      data => {
+        this.tokenStorageService.saveToken(data.access);
+        this.tokenStorageService.saveUser(data);
+        this.dialogRef.close();
+      },
+      error => {
+        console.log(error);
+        this.message = 'Invalid credentials';
+      }
+    );
   }
 }

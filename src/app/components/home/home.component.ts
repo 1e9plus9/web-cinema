@@ -10,7 +10,7 @@ import { MovieService } from '../../services/movie.service';
 })
 
 export class HomeComponent implements OnInit {
-  movies: Movie[];
+  movies: Movie[] = null;
   selected: Movie = null;
   regular = {filter: 'brightness(85%)'};
   dark = {filter: 'brightness(30%)'};
@@ -23,7 +23,15 @@ export class HomeComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.movieService.getMovies().subscribe(movies => this.movies = movies);
+    console.log('here');
+    this.movieService.getMovies().subscribe(movies => {
+        this.movies = movies;
+        console.log('received');
+      },
+      error => {
+        console.log('error');
+      }
+    );
   }
 
   setEffect(movie: Movie): void {

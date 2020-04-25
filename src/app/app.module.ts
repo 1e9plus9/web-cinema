@@ -19,7 +19,8 @@ import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SearchComponent } from './components/search/search.component';
 import { CommentPageComponent } from './components/comment-page/comment-page.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { authInterceptorProviders } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,12 +43,9 @@ import {FormsModule} from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
     FormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
