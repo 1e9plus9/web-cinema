@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
     console.log('here');
     this.movieService.getMovies().subscribe(movies => {
         this.movies = movies;
+        for (const movie of this.movies) {
+          console.log(movie);
+        }
+
         console.log('received');
       },
       error => {
