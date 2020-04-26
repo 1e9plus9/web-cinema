@@ -13,8 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SearchComponent } from './components/search/search.component';

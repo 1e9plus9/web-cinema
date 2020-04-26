@@ -1,5 +1,6 @@
 export interface Movie {
   id: number;
+  comment_page_id: number;
   title: string;
   background: string;
   poster: string;
@@ -7,6 +8,4 @@ export interface Movie {
   director: string;
   cast: string;
   synopsis: string;
-  genres: string[];
-  pageId: number;
 }

@@ -11,18 +11,17 @@ import {CommentPageComponent} from '../comment-page/comment-page.component';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: Movie = null;
-  pageId: number = null;
+  PAGE_ID: number = null;
   constructor(private route: ActivatedRoute, private movieService: MovieService) { }
   ngOnInit(): void {
     this.getMovie();
   }
-
   getMovie(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovieById(id).subscribe(
       movie => {
         this.movie = movie;
-        this.pageId = this.movie.id;
+        this.PAGE_ID = this.movie.comment_page_id;
       }
     );
 

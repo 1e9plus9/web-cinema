@@ -28,6 +28,7 @@ export class AuthorizationComponent implements OnInit {
       data => {
         this.tokenStorageService.saveToken(data.access);
         this.tokenStorageService.saveUser(data);
+        window.location.reload();
         this.dialogRef.close();
       },
       error => {

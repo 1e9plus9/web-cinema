@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {CommentSet} from '../commentSet';
+import {CommentPage} from '../commentPage';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Comment} from '../comment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  constructor(private httpClient: HttpClient) { }
-  private baseUrl = 'api/commentPages';
+  constructor(private http: HttpClient) { }
+  private BASE_URL = 'http://localhost:8000/api/comments/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-
-  getComments(pageId: number): Observable<CommentSet> {
-    const url = `${this.baseUrl}/${pageId}`;
-    return this.httpClient.get<CommentSet>(url);
+  getComments(id: number): Observable<any> {
+    const url = `${this.BASE_URL}${id}/`;
+    return this.http.get(url, this.httpOptions);
   }
-  updateComment(commentSet: CommentSet): Observable<any> {
-    return this.httpClient.put(this.baseUrl, commentSet, this.httpOptions);
+  writeComment(message: string, id: number): void {
+    const url = `${this.BASE_URL}${id}/post/`;
+    this.http.post(url, JSON.stringify(message), this.httpOptions).subscribe(
+      data => {
+        console.log('oof');
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

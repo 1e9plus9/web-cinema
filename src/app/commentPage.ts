@@ -1,6 +1,6 @@
 import { Comment } from './comment';
 
-export class CommentSet {
+export class CommentPage {
   id: number;
   comments: Comment[];
 }
