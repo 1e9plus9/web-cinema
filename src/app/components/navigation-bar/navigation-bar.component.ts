@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {AuthorizationComponent} from '../authorization/authorization.component';
 import {RegistrationComponent} from '../registration/registration.component';
 import {TokenStorageService} from '../../services/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,8 +11,11 @@ import {TokenStorageService} from '../../services/token-storage.service';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-  constructor(private matDialog: MatDialog, private tokenStorageService: TokenStorageService) { }
+  constructor(private matDialog: MatDialog, private tokenStorageService: TokenStorageService,
+              private router: Router) { }
+
   text: string;
+
   ngOnInit(): void {
     if (this.tokenStorageService.getToken() === null) {
       this.text = 'Log In';
@@ -47,5 +51,20 @@ export class NavigationBarComponent implements OnInit {
     dialogConfig.width = '550px';
     dialogConfig.backdropClass = 'dark-backdrop';
     const modalDialog = this.matDialog.open(RegistrationComponent, dialogConfig);
+  }
+
+  profile(): void {
+    if (this.tokenStorageService.getToken() === null) {
+      alert('You need to login first to view your profile');
+    } else {
+      this.router.navigate(['/profile/', this.tokenStorageService.getUser()]).then(
+        nav => {
+          console.log(nav);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
   }
 }

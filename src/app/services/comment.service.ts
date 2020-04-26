@@ -28,4 +28,30 @@ export class CommentService {
       }
     );
   }
+  updateComment(id: number, delta: number): void {
+    const url = this.BASE_URL + 'change/' + id;
+
+    this.http.put(url, JSON.stringify(delta), this.httpOptions).subscribe(
+      data => {
+        console.log('woof');
+        window.location.reload();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  deleteComment(id: number): void {
+    const url = this.BASE_URL + 'delete/' + id;
+    this.http.delete(url, this.httpOptions).subscribe(
+      data => {
+        console.log('woof');
+        window.location.reload();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

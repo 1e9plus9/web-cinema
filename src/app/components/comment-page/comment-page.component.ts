@@ -6,7 +6,7 @@ import { CommentService } from '../../services/comment.service';
 import { Comment } from '../../comment';
 import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from '../../services/token-storage.service';
-import {C} from '@angular/cdk/keycodes';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-comment-page',
@@ -14,7 +14,8 @@ import {C} from '@angular/cdk/keycodes';
   styleUrls: ['./comment-page.component.css']
 })
 export class CommentPageComponent implements OnInit {
-  constructor(private commentService: CommentService, private tokenStorageService: TokenStorageService) { }
+  constructor(public commentService: CommentService,
+              public tokenStorageService: TokenStorageService) { }
 
   @Input() PAGE_ID: number;
   comments: Comment[];
@@ -34,7 +35,8 @@ export class CommentPageComponent implements OnInit {
     }
   }
 
-  changeVote(comment: Comment, delta: number) {
+  changeVote(commentId: number, delta: number) {
+    this.commentService.updateComment(commentId, delta);
   }
 
   writeComment(): void {
@@ -42,6 +44,7 @@ export class CommentPageComponent implements OnInit {
     window.location.reload();
   }
 
-  deleteComment(comment: Comment): void {
+  deleteComment(id: number): void {
+    this.commentService.deleteComment(id);
   }
 }

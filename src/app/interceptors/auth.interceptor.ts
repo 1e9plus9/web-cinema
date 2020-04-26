@@ -23,21 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token != null) {
       authRequest = request.clone({ headers: request.headers.set(TOKEN_HEADER_KEY, 'JWT ' + token) });
     }
-    return next.handle(authRequest).pipe(
-      catchError(
-        (err, caught) => {
-          if (err.status === 401) {
-            this.handleError();
-            return of(err);
-          }
-          throw err;
-        }
-      )
-    );
-  }
-  handleError(): void {
-    this.token.signOut();
-    window.location.reload();
+    return next.handle(authRequest);
   }
 }
 

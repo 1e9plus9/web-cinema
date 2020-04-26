@@ -9,7 +9,7 @@ import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   { path: 'search', component: SearchComponent },
-  { path: 'profile/:string', component: UserProfileComponent },
+  { path: 'profile/:name', component: UserProfileComponent },
   { path: 'movies/:id', component: MovieDetailsComponent},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'}
